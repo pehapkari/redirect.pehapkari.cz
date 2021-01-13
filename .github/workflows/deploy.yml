@@ -17,9 +17,8 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
-      - run: cat /home/runner/.ssh/id_rsa
-      - run: ls -la /home/runner/.ssh
-
-      - run: git remote rename origin upstream
-      - run: git remote add origin git@server.disconnect.cz:redirect.pehapkari.cz
-      - run: git push origin main:production
+      - name: Push to remote Git repository
+        run: |
+          git remote rename origin upstream
+          git remote add origin git@server.disconnect.cz:redirect.pehapkari.cz
+          git push origin main:production
