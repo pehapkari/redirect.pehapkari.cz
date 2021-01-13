@@ -16,3 +16,8 @@ jobs:
         with:
           key: ${{ secrets.PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
+
+      - run: |
+          git remote rename origin upstream
+          git remote add origin git@server.disconnect.cz:redirect.pehapkari.cz
+          git push origin main:production
